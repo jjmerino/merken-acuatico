@@ -2,6 +2,7 @@ package cl.adepti.merkenacuatico.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 
@@ -22,13 +23,16 @@ public class SpringMongoConfig extends AbstractMongoConfiguration{
  
 	@Override
 	protected String getDatabaseName() {
-		return "yourdb";
+		return "merken-acuatico";
 	}
  
 	@Override
 	@Bean
 	public Mongo mongo() throws Exception {
-		return new MongoClient("127.0.0.1");
+		return new MongoClient("ds063307.mongolab.com:63307");
 	}
- 
+	
+	protected UserCredentials getUserCredentials() {
+		return new UserCredentials("merken-acuatico","merkenhackeradepti");
+	}
 }
