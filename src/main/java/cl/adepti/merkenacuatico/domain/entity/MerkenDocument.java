@@ -2,7 +2,11 @@ package cl.adepti.merkenacuatico.domain.entity;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
 
 public class MerkenDocument {
@@ -11,7 +15,7 @@ public class MerkenDocument {
 	
 	private String clientFilename;//original client file name
 
-	private GridFSFile file;
+	private String fileId; // Reference to the stored file.
 	
 	public MerkenDocument(String clientFilename){
 		this.clientFilename = clientFilename;
@@ -24,11 +28,11 @@ public class MerkenDocument {
 		return this.clientFilename;
 	}
 
-	public GridFSFile getFile(){
-		return this.file;
+	public void setFileId(String id) {
+		this.fileId = id;
 	}
-	public void setMongoFile(GridFSFile file) {
-		this.file = file;
+	public String getFileId(){
+		return this.fileId;
 	}
 	
 }
