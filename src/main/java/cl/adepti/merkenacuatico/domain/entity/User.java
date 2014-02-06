@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +16,7 @@ import cl.adepti.merkenacuatico.security.Role;
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	 
+	private ObjectId id;
     private String username;
     private String password;
     private String email;
@@ -33,7 +34,23 @@ public class User implements UserDetails {
     	this.authorities = new LinkedList<Role>();
     	this.authorities.add(new Role("ROLE_USER"));
     }
+	public ObjectId getId(){
+		return id;
+		
+	}
 	
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.authorities;

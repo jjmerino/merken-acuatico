@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import cl.adepti.merkenacuatico.data.FileStorageService;
+import cl.adepti.merkenacuatico.data.StorageService;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
@@ -35,7 +36,7 @@ public class SpringMongoConfig extends AbstractMongoConfiguration{
 	}
 
 	@Bean
-	FileStorageService documentStorageService() {
+	StorageService documentStorageService() {
 		return new FileStorageService();
 	}
 	

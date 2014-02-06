@@ -3,6 +3,7 @@ package cl.adepti.merkenacuatico.rest.controller;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +25,8 @@ public class ExamController {
 	
 	@RequestMapping("/exams/{examid}")
 	@ResponseBody
-	public ExamResource exam(@PathVariable Integer examid) {
-		Exam exam = repository.findById(examid);
+	public ExamResource exam(@PathVariable String string) {
+		Exam exam = repository.findById(new ObjectId(string));
 		return examAssembler.toResource(exam);
 	}
 	@RequestMapping("/exams")

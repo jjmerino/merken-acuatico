@@ -25,13 +25,14 @@ import com.mongodb.DBObject;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
 
-import cl.adepti.merkenacuatico.data.FileStorageService;
+import cl.adepti.merkenacuatico.data.StorageService;
+import cl.adepti.merkenacuatico.domain.entity.MongoMerkenFile;
 
 @Controller
 public class FileController {
 	
 	@Autowired
-	private FileStorageService storage;
+	private StorageService storage;
 	@Autowired
 	private GridFsOperations  gridOperations;
 	
@@ -70,9 +71,9 @@ public class FileController {
             @RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {
             try {
-                GridFSFile doc = storage.create(file.getInputStream(), file.getOriginalFilename(), file.getContentType(),area);
+                String doc = storage.create(file.getInputStream(), file.getOriginalFilename(), file.getContentType(),area);
                 
-                return "You successfully uploaded "+file.getOriginalFilename()+ ". Renamed to: " + doc.getFilename() + " into mongo id " + doc.getId().toString();
+                return "You successfully uploaded "+file.getOriginalFilename()+ ". into mongo id " + doc;
                 
             } catch (Exception e) {
                 return "You failed to upload " + file.getOriginalFilename() + " => " + e.getMessage();

@@ -19,7 +19,7 @@ public class ExamAssembler extends ResourceAssemblerSupport<Exam, ExamResource> 
 	@Override
 	public ExamResource toResource(Exam exam) {
 		ExamResource resource = new ExamResource();
-		resource.add(linkTo(methodOn(ExamController.class).exam(exam.getId())).withSelfRel());
+		resource.add(linkTo(methodOn(ExamController.class).exam(exam.getId().toString())).withSelfRel());
 
 		resource.add(linkTo(methodOn(ExamController.class).exams())
 				.withRel("exams"));
