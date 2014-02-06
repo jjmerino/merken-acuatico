@@ -1,7 +1,6 @@
-package cl.adepti.merkenacuatico.services;
+package cl.adepti.merkenacuatico.stubs;
 
 import java.io.InputStream;
-
 import cl.adepti.merkenacuatico.data.StorageService;
 import cl.adepti.merkenacuatico.domain.entity.MerkenFile;
 

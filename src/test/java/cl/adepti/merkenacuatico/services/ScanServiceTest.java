@@ -2,6 +2,7 @@ package cl.adepti.merkenacuatico.services;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
 import org.junit.Test;
 
 import com.google.zxing.ChecksumException;
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
 import cl.adepti.merkenacuatico.data.StorageService;
 import cl.adepti.merkenacuatico.domain.ScanService;
 import cl.adepti.merkenacuatico.domain.entity.Page;
+import cl.adepti.merkenacuatico.stubs.FakeStorageService;
 public class ScanServiceTest {
 
 	StorageService fileService = new FakeStorageService();
@@ -23,7 +25,6 @@ public class ScanServiceTest {
 		assertNotNull(fileService);
 		
 		page.setFileId("pagep1.png");
-		
 		BufferedImage image=null;
 		try {
 			image = service.getImageForPage(page);

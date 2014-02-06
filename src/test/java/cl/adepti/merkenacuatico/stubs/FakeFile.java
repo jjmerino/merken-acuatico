@@ -1,4 +1,4 @@
-package cl.adepti.merkenacuatico.services;
+package cl.adepti.merkenacuatico.stubs;
 
 import java.io.InputStream;
 

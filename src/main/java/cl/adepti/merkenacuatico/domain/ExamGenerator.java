@@ -24,7 +24,7 @@ public class ExamGenerator {
 	 * @param blueprint
 	 * @return
 	 */
-	public List<Exam> generateExams(BluePrint blueprint){
+	public List<Exam> generateExams(BluePrint blueprint) throws Exception{
 		List<Exam> list = new LinkedList<Exam>();
 		
 		for(Student s : blueprint.getStudents()){
@@ -32,7 +32,8 @@ public class ExamGenerator {
 			exam.setBluePrint(blueprint);
 			exam.setStudent(s);
 			examRepo.save(exam);
-			MerkenFile doc = pdfService.create(exam);
+			MerkenFile doc;
+			doc = pdfService.create(exam);
 			exam.setSourceDocument(doc);
 			examRepo.save(exam);
 			list.add(exam);

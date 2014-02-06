@@ -38,7 +38,6 @@ public class ScanService{
 	}
 	
 	public BufferedImage getImageForPage(Page page) throws IOException {
-		System.out.println(page.getFileId().toString());
 		MerkenFile file = fileService.find(page.getFileId().toString());
 		InputStream stream = file.getInputStream();
 		BufferedImage imBuff = ImageIO.read(stream);
