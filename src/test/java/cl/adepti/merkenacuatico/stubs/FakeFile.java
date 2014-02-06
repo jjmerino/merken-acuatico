@@ -1,6 +1,5 @@
 package cl.adepti.merkenacuatico.stubs;
 
-import java.io.InputStream;
 
 import cl.adepti.merkenacuatico.domain.entity.MerkenFile;
 
@@ -10,21 +9,10 @@ import cl.adepti.merkenacuatico.domain.entity.MerkenFile;
  * @author Jose
  *
  */
-public class FakeFile implements MerkenFile {
+public class FakeFile extends MerkenFile {
 	
-	String name = "testPage.png";
 	public FakeFile(String name){
-		this.name = name;
-	}
-	@Override
-	public InputStream getInputStream() {
-		InputStream str = ClassLoader.getSystemClassLoader().getResourceAsStream(this.name);
-		return str;
-	}
-
-	@Override
-	public String getFileName() {
-		return this.name;
+		super(name,ClassLoader.getSystemClassLoader().getResourceAsStream(name),name);
 	}
 
 }

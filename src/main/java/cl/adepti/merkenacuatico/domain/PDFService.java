@@ -6,7 +6,7 @@ import cl.adepti.merkenacuatico.domain.entity.MerkenFile;
 public interface PDFService {
 
 	/**
-	 * Creastes a document for the exam.
+	 * Creates a document for the exam. Adds it to the exam. Persists it and return it.
 	 * @param exam
 	 * @return
 	 * @throws Exception when the exam is not persisted

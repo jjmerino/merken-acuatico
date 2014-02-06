@@ -1,31 +1,21 @@
 package cl.adepti.merkenacuatico.domain.entity;
 
 
-import java.io.InputStream;
 
 import com.mongodb.gridfs.GridFSDBFile;
-public class MongoMerkenFile implements MerkenFile {
+public class MongoMerkenFile extends MerkenFile {
 	
 	private GridFSDBFile gridFsFile;
 
 	public MongoMerkenFile(GridFSDBFile file){
+		super(file.getId().toString(),file.getInputStream(),file.getFilename());
 		this.gridFsFile = file;
-		
 	}
-	/* (non-Javadoc)
-	 * @see cl.adepti.merkenacuatico.domain.entity.IMerkenFile#getInputStream()
-	 */
-	@Override
-	public InputStream getInputStream(){
-		return this.gridFsFile.getInputStream();
+	
+	public GridFSDBFile getGridFsDBFile(){
+		return this.gridFsFile;
 	}
-	/* (non-Javadoc)
-	 * @see cl.adepti.merkenacuatico.domain.entity.IMerkenFile#getFileName()
-	 */
-	@Override
-	public String getFileName() {
-		return this.gridFsFile.getFilename();
-	}
+
 	
 	
 }

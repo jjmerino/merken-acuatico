@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 public class Exam {
@@ -15,11 +16,15 @@ public class Exam {
 	@DBRef
 	private BluePrint bluePrint;
 	
-	private MerkenFile sourceDocument;//Backup of original pdf File with the exam.
+	@Transient
+	private MerkenFile sourceDocument;
 	
+	@Transient
 	private MerkenFile annotatedDocument;
 	
 	private List<Page> pages;
+	
+	private Integer originalNumPages;
 	
 	public ObjectId getId() {
 		return id;
@@ -111,6 +116,12 @@ public class Exam {
 	 */
 	public void setPages(List<Page> pages) {
 		this.pages = pages;
+	}
+
+
+	public void setOriginalNumPages(Integer numPages) {
+		this.originalNumPages = numPages;
+		
 	}
 	
 	
